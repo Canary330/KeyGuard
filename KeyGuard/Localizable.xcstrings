@@ -117,6 +117,9 @@
         }
       }
     },
+    "为每一次按键添加清脆的点击声，在薄膜键盘上也能找回机械键轴的操作快感。" : {
+
+    },
     "仍要添加" : {
       "localizations" : {
         "en" : {
@@ -293,6 +296,9 @@
         }
       }
     },
+    "复古机械音效" : {
+
+    },
     "好的" : {
       "localizations" : {
         "en" : {
@@ -311,6 +317,31 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "好的"
+          }
+        }
+      }
+    },
+    "实验室：奇奇怪怪的功能" : {
+
+    },
+    "将 ⌘⇧S 当作系统截图（同 ⌘⇧5）" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use ⌘⇧S as System Screenshot (same as ⌘⇧5)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將 ⌘⇧S 當作系統截圖（同 ⌘⇧5）"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將 ⌘⇧S 當作系統截圖（同 ⌘⇧5）"
           }
         }
       }
@@ -336,6 +367,12 @@
           }
         }
       }
+    },
+    "开启后，你输入的字母会随机变成大小写混搭（lIkE tHiS），让你的文字自带嘲讽属性。" : {
+
+    },
+    "当检测到极高频率（<50ms）的乱码输入时拦截事件，防止主子踩键盘导致代码被删。" : {
+
     },
     "未开启" : {
       "localizations" : {
@@ -403,6 +440,9 @@
         }
       }
     },
+    "海绵宝宝模式" : {
+
+    },
     "添加单个字母、数字或空格等按键可能影响输入法与正常输入，请确认是否仍要添加。" : {
       "localizations" : {
         "en" : {
@@ -447,6 +487,9 @@
         }
       }
     },
+    "猫咪护卫" : {
+
+    },
     "知道了" : {
       "localizations" : {
         "en" : {
@@ -465,6 +508,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "知道了"
+          }
+        }
+      }
+    },
+    "禁止 ⌘H 隐藏应用" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block ⌘H Hide App"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘H 隱藏應用程式"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘H 隱藏應用程式"
+          }
+        }
+      }
+    },
+    "禁止 ⌘M 最小化窗口" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block ⌘M Minimize Window"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘M 最小化視窗"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘M 最小化視窗"
           }
         }
       }
@@ -509,6 +596,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "禁止 ⌘Q 結束：已開啟"
+          }
+        }
+      }
+    },
+    "禁止 ⌘Q 退出应用" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block ⌘Q Quit"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘Q 結束應用程式"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘Q 結束應用程式"
+          }
+        }
+      }
+    },
+    "禁止 ⌘W 关闭窗口" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block ⌘W Close Window"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘W 關閉視窗"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止 ⌘W 關閉視窗"
           }
         }
       }
@@ -575,6 +706,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "請按下要停用的快捷鍵…"
+          }
+        }
+      }
+    },
+    "辅助功能权限" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessibility Permission"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輔助功能權限"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輔助功能權限"
+          }
+        }
+      }
+    },
+    "运行时不显示在程序坞" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide from Dock when running"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行時不顯示在程式塢"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行時不顯示在程式塢"
           }
         }
       }
@@ -663,160 +838,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "須在「系統設定 → 隱私權與安全性 → 輔助使用」中開啟本應用程式，全域攔截才會生效。"
-          }
-        }
-      }
-    },
-    "禁止 ⌘Q 退出应用" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Block ⌘Q Quit"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘Q 結束應用程式"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘Q 結束應用程式"
-          }
-        }
-      }
-    },
-    "禁止 ⌘W 关闭窗口" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Block ⌘W Close Window"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘W 關閉視窗"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘W 關閉視窗"
-          }
-        }
-      }
-    },
-    "禁止 ⌘H 隐藏应用" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Block ⌘H Hide App"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘H 隱藏應用程式"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘H 隱藏應用程式"
-          }
-        }
-      }
-    },
-    "禁止 ⌘M 最小化窗口" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Block ⌘M Minimize Window"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘M 最小化視窗"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止 ⌘M 最小化視窗"
-          }
-        }
-      }
-    },
-    "将 ⌘⇧S 当作系统截图（同 ⌘⇧5）" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use ⌘⇧S as System Screenshot (same as ⌘⇧5)"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ⌘⇧S 當作系統截圖（同 ⌘⇧5）"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ⌘⇧S 當作系統截圖（同 ⌘⇧5）"
-          }
-        }
-      }
-    },
-    "辅助功能权限" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accessibility Permission"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輔助功能權限"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輔助功能權限"
-          }
-        }
-      }
-    },
-    "运行时不显示在程序坞" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hide from Dock when running"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "執行時不顯示在程式塢"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "執行時不顯示在程式塢"
           }
         }
       }

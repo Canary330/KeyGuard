@@ -9,10 +9,17 @@ import AppKit
 import ApplicationServices
 import CoreGraphics
 import SwiftUI
+import AudioToolbox
 
 // 键盘虚拟键码：Q=12, S=1, 5=23（与 Cmd+Shift+5 系统截图一致）
 private let kVK_ANSI_S: Int64 = 1
 private let kVK_ANSI_5: Int64 = 23
+
+/// 记录最近按键的时间戳，用于“猫咪护卫”模式
+private var lastKeyTimestamps: [Date] = []
+private let catGuardThreshold: Double = 0.05 // 50ms 连续按键判定为猫
+private let catGuardWindowSize = 8
+private var lastCatAlertTime: Date = .distantPast
 
 /// 将 Cmd+Shift+S 转为 Cmd+Shift+5 并投递，以触发系统截图界面
 private func postScreenshotShortcut() {
@@ -41,17 +48,70 @@ private func globalKeyEventTapCallback(
     let flags = event.flags
     let modifierBits = DisabledShortcut.modifierBits(from: flags)
 
-    // 用户配置的「全局禁用」列表（含与 ⌘Q/⌘W/⌘H/⌘M 开关同步的项，不做重复控制）
+    // 1. 复古音效 (Retro Clicky)
+    if UserDefaults.standard.bool(forKey: AppDelegate.retroClickyKey) {
+        // 使用 NSSound 播放 Tink 声音，这是最通用的系统声音之一
+        NSSound(named: "Tink")?.play()
+    }
+
+    // 2. 猫咪护卫 (Cat Guard)
+    if UserDefaults.standard.bool(forKey: AppDelegate.catGuardKey) {
+        let now = Date()
+        lastKeyTimestamps.append(now)
+        if lastKeyTimestamps.count > catGuardWindowSize {
+            lastKeyTimestamps.removeFirst()
+            if let first = lastKeyTimestamps.first {
+                let duration = now.timeIntervalSince(first)
+                let avgInterval = duration / Double(catGuardWindowSize)
+                if avgInterval < catGuardThreshold {
+                    // 判定为猫踩键盘，拦截并弹窗（如果不在冷却期）
+                    if now.timeIntervalSince(lastCatAlertTime) > 5.0 {
+                        lastCatAlertTime = now
+                        DispatchQueue.main.async {
+                            let alert = NSAlert()
+                            alert.messageText = "🐾 检测到猫咪出没！"
+                            alert.informativeText = "检测到极高频率的连击，KeyGuard 已自动拦截后续输入。请确认是否是猫咪踩到了键盘？"
+                            alert.alertStyle = .warning
+                            alert.addButton(withTitle: "好的，我知道了")
+                            NSApp.activate(ignoringOtherApps: true)
+                            alert.runModal()
+                        }
+                    }
+                    return nil
+                }
+            }
+        }
+    } else {
+        lastKeyTimestamps.removeAll()
+    }
+
+    // 3. 用户配置的「全局禁用」列表
     let disabledList = DisabledShortcut.load()
     for item in disabledList where item.keyCode == keyCode && item.modifierBits == modifierBits {
         return nil
     }
 
-    // 将 Command+Shift+S 映射为 Command+Shift+5（系统截图）
+    // 4. 将 Command+Shift+S 映射为 Command+Shift+5（系统截图）
     if keyCode == Int(kVK_ANSI_S) && flags.contains(.maskCommand) && flags.contains(.maskShift) {
         if UserDefaults.standard.bool(forKey: AppDelegate.remapCmdShiftSToScreenshotKey) {
             postScreenshotShortcut()
             return nil
+        }
+    }
+
+    // 5. 海绵宝宝模式 (SpongeBob Mode)
+    if UserDefaults.standard.bool(forKey: AppDelegate.spongebobModeKey) {
+        // A-Z 的 keyCode 范围大致在 0-50 之间，这里简单判断是否是字母
+        let letterKeyCodes: Set<Int> = [0,11,8,2,14,3,5,4,34,38,40,37,46,45,31,35,12,15,1,17,32,9,13,7,16,6]
+        if letterKeyCodes.contains(keyCode) && modifierBits == 0 || modifierBits == 2 {
+            // 50% 概率翻转 Shift 状态
+            if Bool.random() {
+                if flags.contains(.maskShift) {
+                    event.flags.remove(.maskShift)
+                } else {
+                    event.flags.insert(.maskShift)
+                }
+            }
         }
     }
 
@@ -73,6 +133,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     static let blockCommandMKey = "blockCommandM"
     /// 运行时不显示在程序坞（开启时使用 .accessory，关闭时使用 .regular，用户仍可通过「保留在程序坞」等系统行为控制）
     static let hideFromDockKey = "KeyGuard_hideFromDock"
+
+    // --- 奇奇怪怪的功能 Key ---
+    static let spongebobModeKey = "KeyGuard_spongebobMode"
+    static let retroClickyKey = "KeyGuard_retroClicky"
+    static let catGuardKey = "KeyGuard_catGuard"
 
     private var eventTapThread: Thread?
     private var runLoopSource: CFRunLoopSource?

@@ -52,6 +52,9 @@ struct SettingsView: View {
     @AppStorage(hasSeenIntroKey) private var hasSeenIntro = false
     @AppStorage(AppDelegate.remapCmdShiftSToScreenshotKey) private var remapCmdShiftS = false
     @AppStorage(AppDelegate.hideFromDockKey) private var hideFromDock = false
+    @AppStorage(AppDelegate.spongebobModeKey) private var spongebobMode = false
+    @AppStorage(AppDelegate.retroClickyKey) private var retroClicky = false
+    @AppStorage(AppDelegate.catGuardKey) private var catGuard = false
     @ObservedObject private var disabledShortcuts = DisabledShortcutsStore.shared
     @State private var isRecording = false
     @State private var pendingSingleKey: (keyCode: Int, modifierBits: Int)? = nil
@@ -100,6 +103,33 @@ struct SettingsView: View {
                     globalDisabledCard
 
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                        featureCard(
+                            icon: "face.smiling",
+                            title: "海绵宝宝模式",
+                            description: "开启后，你输入的字母会随机变成大小写混搭（lIkE tHiS），让你的文字自带嘲讽属性。",
+                            color: Accent.purple,
+                            tint: .purple
+                        ) {
+                            Toggle("", isOn: $spongebobMode).toggleStyle(.switch)
+                        }
+                        featureCard(
+                            icon: "speaker.wave.2",
+                            title: "复古机械音效",
+                            description: "为每一次按键添加清脆的点击声，在薄膜键盘上也能找回机械键轴的操作快感。",
+                            color: Accent.teal,
+                            tint: .teal
+                        ) {
+                            Toggle("", isOn: $retroClicky).toggleStyle(.switch)
+                        }
+                        featureCard(
+                            icon: "pawprint.fill",
+                            title: "猫咪护卫",
+                            description: "当检测到极高频率（<50ms）的乱码输入时拦截事件，防止主子踩键盘导致代码被删。",
+                            color: Accent.orange,
+                            tint: .orange
+                        ) {
+                            Toggle("", isOn: $catGuard).toggleStyle(.switch)
+                        }
                         featureCard(icon: "xmark.circle", title: "禁止 ⌘Q 退出应用", color: Accent.orange, tint: .orange) {
                             Toggle("", isOn: bindingForKnown(.commandQ, accessibilityAlert: $showAccessibilityAlert)).toggleStyle(.switch)
                         }
@@ -260,16 +290,26 @@ struct SettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
-    private func featureCard<C: View>(icon: String, title: LocalizedStringKey, color: Color, tint: CardTheme.Tint, @ViewBuilder content: () -> C) -> some View {
+    private func featureCard<C: View>(icon: String, title: LocalizedStringKey, description: LocalizedStringKey? = nil, color: Color, tint: CardTheme.Tint, @ViewBuilder content: () -> C) -> some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(color)
                 .frame(width: 22, alignment: .center)
             VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.subheadline.weight(.medium))
-                content()
+                HStack {
+                    Text(title)
+                        .font(.subheadline.weight(.medium))
+                    Spacer()
+                    content()
+                }
+                if let desc = description {
+                    Text(desc)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(3)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
